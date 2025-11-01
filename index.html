@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brilho & Essência - Joias e Bijuterias</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            animation: fadeIn 1s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        header {
+            background: #f8f8f8;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+            animation: slideDown 1.2s ease-out;
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #d4af37;
+            margin: 0;
+        }
+        nav {
+            background: #fff;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in;
+        }
+        nav a {
+            color: #333;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s, transform 0.3s;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+        nav a:hover, nav a:focus {
+            color: #d4af37;
+            transform: scale(1.05);
+            outline: 2px solid #d4af37;
+        }
+        .hero {
+            background: #f0f0f0;
+            padding: 80px 20px;
+            text-align: center;
+            animation: zoomIn 1.5s ease-out;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.9); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #d4af37;
+        }
+        .products {
+            padding: 60px 20px;
+            background: #fff;
+            animation: fadeInUp 2s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .products h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 40px;
+            color: #333;
+        }
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .product {
+            flex: 0 0 280px;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.3s, transform 0.3s;
+            scroll-snap-align: start;
+            animation: bounceIn 1s ease-out;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .product:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+        .product img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .product-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .product-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+        }
+        .product-info p {
+            font-size: 1.1em;
+            color: #666;
+        }
+        .btn {
+            background: #d4af37;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%;
+            font-weight: 500;
+        }
+        .btn:hover, .btn:focus {
+            background: #b8860b;
+            transform: scale(1.05);
+            outline: 2px solid #d4af37;
+        }
+        .testimonials {
+            padding: 60px 20px;
+            background: #f8f8f8;
+            text-align: center;
+            animation: fadeInUp 2.5s ease-out;
+        }
+        .testimonial {
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            color: #555;
+        }
+        .test-section {
+            padding: 60px 20px;
+            background: #fff;
+            text-align: center;
+            animation: fadeInUp 3s ease-out;
+        }
+        .test-button {
+            background: #d4af37;
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+        .test-button:hover, .test-button:focus {
+            background: #b8860b;
+            transform: scale(1.05);
+            outline: 2px solid #d4af37;
+        }
+        .contact {
+            padding: 60px 20px;
+            background: #f0f0f0;
+            animation: fadeInUp 3.5s ease-out;
+        }
+        .contact form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+        .contact input:focus, .contact textarea:focus {
+            border-color: #d4af37;
+            outline: 2px solid #d4af37;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            animation: fadeIn 4s ease-in;
+        }
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            animation: modalFade 0.3s ease-in;
+        }
+        @keyframes modalFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .modal-content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            color: #d4af37;
+        }
+        .modal-content form {
+            text-align: left;
+        }
+        .modal-content input, .modal-content select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: border 0.3s;
+        }
+        .modal-content input:focus, .modal-content select:focus {
+            border-color: #d4af37;
+            outline: 2px solid #d4af37;
+        }
+        .modal-content button {
+            background: #d4af37;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .modal-content button:hover, .modal-content button:focus {
+            background: #b8860b;
+            transform: scale(1.05);
+            outline: 2px solid #d4af37;
+        }
+        .close {
+            float: right;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+        .close:focus {
+            outline: 2px solid #d4af37;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-gem" aria-hidden="true"></i> Brilho & Essência</h1>
+        <p>Joias e Bijuterias Acessíveis com Toque de Luxo</p>
+    </header>
+    <nav role="navigation" aria-label="Menu principal">
+        <a href="#home" aria-label="Ir para Início"><i class="fas fa-home" aria-hidden="true"></i> Início</a>
+        <a href="#products" aria-label="Ir para Produtos"><i class="fas fa-shopping-bag" aria-hidden="true"></i> Produtos</a>
+        <a href="#test" aria-label="Ir para Teste de Brilho"><i class="fas fa-magic" aria-hidden="true"></i> Teste de Brilho</a>
+        <a href="#contact" aria-label="Ir para Contato"><i class="fas fa-envelope" aria-hidden="true"></i> Contato</a>
+    </nav>
+    <section id="home" class="hero">
+        <h2>Descubra o Brilho da Essência</h2>
+        <p>Joias exclusivas e acessíveis para realçar sua beleza.</p>
+    </section>
+    <section id="products" class="products">
+        <h2>Nossos Produtos</h2>
+        <div class="carousel" role="region" aria-label="Carrossel de produtos">
+            <div class="product">
+                <img src="https://via.placeholder.com/280x200?text=Anel+Dourado" alt="Imagem de anel dourado elegante">
+                <div class="product-info">
+                    <h3>Anel Dourado</h3>
+                    <p>R$ 15,00</p>
+                    <button class="btn" onclick="openModal('Anel Dourado', '15,00')" aria-label="Comprar Anel Dourado">Comprar</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/280x200?text=Colar+de+Pérolas" alt="Imagem de colar de pérolas clássico">
+                <div class="product-info">
+                    <h3>Colar de Pérolas</h3>
+                    <p>R$ 30,00</p>
+                    <button class="btn" onclick="openModal('Colar de Pérolas', '30,00')" aria-label="Comprar Colar de Pérolas">Comprar</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/280x200?text=Brincos+Prateados" alt="Imagem de brincos prateados modernos">
+                <div class="product-info">
+                    <h3>Brincos Prateados</h3>
+                    <p>R$ 10,00</p>
+                    <button class="btn" onclick="openModal('Brincos Prateados', '10,00')" aria-label="Comprar Brincos Prateados">Comprar</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/280x200?text=Pulseira+Cravejada" alt="Imagem de pulseira cravejada brilhante">
+                <div class="product-info">
+                    <h3>Pulseira Cravejada</h3>
+                    <p>R$ 25,00</p>
+                    <button class="btn" onclick="openModal('Pulseira Cravejada', '25,00')" aria-label="Comprar Pulseira Cravejada">Comprar</button>
+                </div>
+            </div>
+            <div class="product">
+                <img src="https://via.placeholder.com/280x200?text=Bracelete+Elegante" alt="Imagem de bracelete elegante">
+                <div class="product-info">
+                    <h3>Bracelete Elegante</h3>
+                    <p>R$ 45,00</p>
+                    <button class="btn" onclick="openModal('Bracelete Elegante', '45,00')" aria-label="Comprar Bracelete Elegante">Comprar</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="testimonials">
+        <h2>O que Nossos Clientes Dizem</h2>
+        <div class="testimonial">
+            <p>"Adorei as joias! Preços acessíveis e brilho incrível."</p>
+            <cite>- Maria Silva</cite>
+        </div>
+    </section>
+    <section id="test" class="test-section">
+        <h2>Teste de Brilho & Essência</h2>
+        <p>Experimente virtualmente nossas joias!</p>
+        <button class="test-button" onclick="alert('Simulação iniciada! Em breve, integração com AR.')" aria-label="Iniciar teste de brilho">Iniciar Teste</button>
+    </section>
+    <section id="contact" class="contact">
+        <h2>Entre em Contato</h2>
+        <form role="form" aria-label="Formulário de contato">
+            <input type="text" placeholder="Nome" required aria-label="Nome">
+            <input type="email" placeholder="Email" required aria-label="Email">
+            <textarea placeholder="Mensagem" rows="5" required aria-label="Mensagem"></textarea>
+            <button class="btn" type="submit" aria-label="Enviar mensagem">Enviar</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy; 2023 Brilho & Essência. Todos os direitos reservados.</p>
+    </footer>
+    <!-- Modal para compra -->
+    <div id="purchaseModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" aria-label="Fechar modal">&times;</span>
+            <h3 id="modalTitle">Produto</h3>
+            <p id="productPrice">Preço: R$ 0,00</p>
+            <form id="purchaseForm" onsubmit="handlePurchase(event)" role="form" aria-label="Formulário de compra">
+                <input type="text" placeholder="Nome Completo" required aria-label="Nome completo">
+                <input type="email" placeholder="Email" required aria-label="Email">
+                <input type="text" placeholder="Endereço" required aria-label="Endereço">
+                <input type="text" placeholder="Telefone" required aria-label="Telefone">
+                <select required aria-label="Forma de pagamento">
+                    <option value="">Forma de Pagamento</option>
+                    <option value="cartao">Cartão de Crédito</option>
+                    <option value="boleto">Boleto</option>
+                    <option value="pix">PIX</option>
+                </select>
+                <button type="submit" aria-label="Finalizar compra">Finalizar Compra</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        // Rolagem suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('
